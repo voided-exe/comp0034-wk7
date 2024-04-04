@@ -1,6 +1,11 @@
 # Line and bar charts page
-from dash import html, register_page, get_asset_url
+from dash import html, register_page, get_asset_url, dcc
 import dash_bootstrap_components as dbc
+# Add an import to import the line_chart function
+from figures import line_chart
+# Add an import to import the scatter_geo function
+from figures import bar_gender
+
 
 # register the page in the app
 register_page(__name__, name="Charts", title="Charts")
@@ -44,12 +49,16 @@ row_two = dbc.Row([
     ], width={"size": 2, "offset": 4}),
 ], align="start")
 
+# Create the Plotly Express line chart object, e.g. to show number of sports
+line = line_chart("sports")
+bar = bar_gender("Summer")
+
 row_three = dbc.Row([
     dbc.Col(children=[
-        html.Img(src=get_asset_url('line-chart-placeholder.png'), className="img-fluid"),
+        dcc.Graph(id="line", figure=line),
     ], width=6),
     dbc.Col(children=[
-        html.Img(src=get_asset_url('bar-chart-placeholder.png'), className="img-fluid"),
+        dcc.Graph(id="bar", figure=bar),
     ], width=6),
 ], align="start")
 

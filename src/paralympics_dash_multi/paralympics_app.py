@@ -4,7 +4,7 @@ from dash import Dash, html
 
 # Variable that contains the external_stylesheet to use, in this case Bootstrap styling from dash bootstrap
 # components (dbc)
-external_stylesheets = [dbc.themes.BOOTSTRAP]
+external_stylesheets = [dbc.themes.CYBORG]
 
 # Define a variable that contains the meta tags
 meta_tags = [
